@@ -5,4 +5,5 @@ Better peeking?
 Fixed darkness behavior that updates so that turning off lights works?
 Bot leaders fixed and improved?
 Improved combat behavior?
-Generally better teamplay?
+Generally better teamwork?
+Better flashbang/grenade usage? (Such as throwing them in hostage rooms or corridors?)
