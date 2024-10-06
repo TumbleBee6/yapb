@@ -1,0 +1,8 @@
+Maybe a waypoint flag (or zone?) for turning off lights when camping a room?
+Zones that help with teamplay and communication?
+A more advanced Get in Position command? (using zones?)
+Better peeking?
+Fixed darkness behavior that updates so that turning off lights works?
+Bot leaders fixed and improved?
+Improved combat behavior?
+Generally better teamplay?
