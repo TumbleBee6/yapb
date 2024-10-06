@@ -4,7 +4,10 @@
 ## ☉ About
 It's a computer controlled players (bots) for the Counter-Strike b6.5 - 1.6 and Counter-Strike: Condition Zero. Bots allows you to play that games without connecting any game server or even without internet.
 
-I wan't some more advanced teamplay, but since I can't code, this fork is stupid and dumb.
+I want some more advanced teamplay, but since I can't code, this fork is stupid and dumb.
+Theres an IDEAS file you can read if you want.
+I have zero idea if any of them are possible.
+
 ## ☉ Documentation
 * English: https://yapb.readthedocs.io/en/latest/
 * Russian: https://yapb.readthedocs.io/ru/latest/
