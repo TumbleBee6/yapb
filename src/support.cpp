@@ -40,7 +40,9 @@ BotSupport::BotSupport () {
       "attention, anomalous agent activity, detected",
       "mister, you are going down",
       "all command access granted, over and out",
-      "help, ass is hostile"
+      "anomalous idiot detected",
+      "doop, you are bad at this",
+      "bizwarn bizwarn you are a biological hazard"
    };
 
    // register weapon aliases
