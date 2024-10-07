@@ -40,7 +40,7 @@ BotSupport::BotSupport () {
       "attention, anomalous agent activity, detected",
       "mister, you are going down",
       "all command access granted, over and out",
-      "anomalous idiot detected",
+      "buzwarn buzwarn anomalous idiot detected",
       "doop, you are bad at this",
       "bizwarn bizwarn you are a biological hazard"
    };
