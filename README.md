@@ -2,7 +2,7 @@
 [![Latest YaPB](https://img.shields.io/github/v/release/yapb/yapb)](https://github.com/yapb/yapb/releases/latest) [![Latest YaPB](https://github.com/yapb/yapb/workflows/build/badge.svg)](https://github.com/yapb/yapb/actions) [![YaPB License](https://img.shields.io/github/license/yapb/yapb)](https://github.com/yapb/yapb/blob/master/LICENSE) [![Downloads](https://img.shields.io/github/downloads/yapb/yapb/total)](https://github.com/yapb/yapb/releases/latest)
 
 ## ☉ About
-Server-side addon for computer controlled players (bots) for Counter-Strike b6.5 - 1.6 and Counter-Strike: Condition Zero. Bots allow you to play games without connecting to any game server or to the internet.
+Server-side addon for computer controlled players (bots) for Counter-Strike b6.5 - 1.6 and Counter-Strike: Condition Zero. Allows you to play games without connecting to any game server or to the internet. Or give players something to do before anyone joins.
 
 I want some more advanced teamplay, but since I can't code, this fork is stupid and dumb.
 Theres an IDEAS file you can read if you want.
