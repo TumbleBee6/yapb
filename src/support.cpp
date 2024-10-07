@@ -36,7 +36,11 @@ BotSupport::BotSupport () {
       "high man, at your command",
       "check check, test, mike check, talk device is activated",
       "hello pal, at your service",
-      "good, day mister, your administration is now acknowledged"
+      "good, day mister, your administration is now acknowledged",
+      "attention, anomalous agent activity, detected",
+      "mister, you are going down",
+      "all command access granted, over and out",
+      "help, ass is hostile"
    };
 
    // register weapon aliases
