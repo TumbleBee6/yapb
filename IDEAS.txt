@@ -9,8 +9,9 @@ Generally better teamwork? (covering eachother and so on)
 Better flashbang/grenade usage? (Such as throwing flashbangs hostage rooms or corridors, im also thinking of having bots use the experience stuff to throw grenades. NOT THROWING HIGH EXPLOSIVES AT THE HOSTAGES IN CRACKHOUSE!!)
 Bots SOMETIMES buy weapons based on map/map ranges? (like buying more smg's and shotguns on cs_office or de_nuke, or more scoped rifles or snipers on maps like cs_desert)
 Using cameras to report enemies in chat? (zones can help with this?)
-Regroup team command making bots goto a waypoint set to be a regroup point? (or just making them regroup somewhere like the area you gave the command, tho that might to similar to the need backup and taking fire commands)
+Regroup team command making bots goto a waypoint set with a regroup point flag? (or just making them regroup somewhere like the area you gave the command, tho that might be too similar to the need backup and taking fire commands)
 More stuff they can learn?
+Improved follow behavior that makes them take a more tactical formation? maybe learned danger or the visibility table stuff can help?
 
 
 
