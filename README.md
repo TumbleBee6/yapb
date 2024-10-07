@@ -6,7 +6,7 @@ It's a computer controlled players (bots) for the Counter-Strike b6.5 - 1.6 and 
 
 I want some more advanced teamplay, but since I can't code, this fork is stupid and dumb.
 Theres an IDEAS file you can read if you want.
-I have zero idea if any of them are possible.
+I have zero idea if any of them are possible. Probably aren't.
 
 ## ☉ Documentation
 * English: https://yapb.readthedocs.io/en/latest/
