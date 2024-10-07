@@ -1,5 +1,5 @@
 Maybe a waypoint flag (or zone?) for turning off lights when camping a room or randomly?
-Zones that help with teamplay and communication?
+Zones that help with teamplay and communication? (like foxbot but maybe ALSO telling bots stuff to do there, maybe a chokepoint zone or rallypoint area for the Get In Position command? could help bot leaders)
 A more advanced Get in Position command? (using zones or waypoint flags to set rallypoints?)
 Better peeking?
 Fixed darkness behavior and making it update so that turning off lights works (like in cs_mansion or cs_estate)
