@@ -12,11 +12,3 @@ Using cameras to report enemies in chat? (zones can help with this?)
 Regroup team command making bots goto a waypoint set with a regroup point flag? (or just making them regroup somewhere like the area you gave the command, tho that might be too similar to the need backup and taking fire commands)
 More stuff they can learn?
 Improved follow behavior that makes them take a more tactical formation? maybe learned danger or the visibility table stuff can help?
-
-
-
-
-
-
-
-NO IDEA IF THESE CAN BE DONE
