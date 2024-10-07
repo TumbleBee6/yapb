@@ -1,9 +1,18 @@
-Maybe a waypoint flag (or zone?) for turning off lights when camping a room?
+Maybe a waypoint flag (or zone?) for turning off lights when camping a room or randomly?
 Zones that help with teamplay and communication?
-A more advanced Get in Position command? (using zones?)
+A more advanced Get in Position command? (using zones or waypoint flags to set rallypoints?)
 Better peeking?
-Fixed darkness behavior that updates so that turning off lights works?
+Fixed darkness behavior and making it update so that turning off lights works (like in cs_mansion or cs_estate)
 Bot leaders fixed and improved?
-Improved combat behavior?
-Generally better teamwork?
+Improved combat and pre-combat behavior? (avoiding snipers if the bot doesn't have grenades or doesn't want to use them, avoid long range fights with shotguns and smgs, stopping before shooting with rifles, or rapidly strafing with SMG's, rushing closer to the enemy with shotguns and mac-10/tmp)
+Generally better teamwork? (covering eachother and so on)
 Better flashbang/grenade usage? (Such as throwing flashbangs hostage rooms or corridors, or NOT THROWING HIGH EXPLOSIVES AT THE HOSTAGES IN CRACKHOUSE!!)
+Bots SOMETIMES buy weapons based on map/map ranges? (like buying more smg's and shotguns on cs_office or de_nuke, or more scoped rifles or snipers on maps like cs_desert)
+Using cameras to report enemies in chat? (zones can help with this?)
+Regroup team command making bots goto a waypoint set to be a regroup point? (or just making them regroup somewhere like the area you gave the command, tho that might to similar to the need backup and taking fire commands)
+More stuff they can learn overtime?
+
+
+
+
+NO IDEA IF THESE CAN BE DONE
