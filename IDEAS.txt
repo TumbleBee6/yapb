@@ -6,4 +6,4 @@ Fixed darkness behavior that updates so that turning off lights works?
 Bot leaders fixed and improved?
 Improved combat behavior?
 Generally better teamwork?
-Better flashbang/grenade usage? (Such as throwing flashbangs hostage rooms or corridors, or NOT THROWING HE'S AT THE HOSTAGES IN CRACKHOUSE!!)
+Better flashbang/grenade usage? (Such as throwing flashbangs hostage rooms or corridors, or NOT THROWING HIGH EXPLOSIVES AT THE HOSTAGES IN CRACKHOUSE!!)
