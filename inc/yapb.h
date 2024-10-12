@@ -686,6 +686,12 @@ public:
    bool m_kickMeFromServer {}; // kick the bot off the server?
    bool m_fireHurtsFriend {}; // firing at enemy will hurt our friend?
 
+   // New Functions 10/07/2024
+   bool m_isEnemyHidden {}; // is the enemy hidden
+
+   // New Variables 10/09/2024
+   float m_checkHiddenTime = 0.f; // next time to check whether the enemy is hidden
+
    edict_t *m_doubleJumpEntity {}; // pointer to entity that request double jump
    edict_t *m_radioEntity {}; // pointer to entity issuing a radio command
    edict_t *m_enemy {}; // pointer to enemy entity
