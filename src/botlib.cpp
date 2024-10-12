@@ -1586,7 +1586,7 @@ void Bot::buyStuff () {
       break;
 
    case BuyState::NightVision:
-      if (teamHasGoodEconomics && m_moneyAmount > 2500 && !m_hasNVG && rg.chance (30) && m_path) {
+      if (teamHasGoodEconomics && m_moneyAmount > 2500 && !m_hasNVG && rg.chance (75) && m_path) {
          const float skyColor = illum.getSkyColor ();
          const float lightLevel = m_path->light;
 
