@@ -58,6 +58,12 @@ int Bot::numEnemiesNear (const Vector &origin, const float radius) {
    return count;
 }
 
+// Back Port (10/06/2024)
+Vector GetGunPosition(edict_t *pEdict)
+{
+	return (pEdict->v.origin + pEdict->v.view_ofs);
+}
+
 bool Bot::isEnemyHidden (edict_t *enemy) {
 	if (game.isNullEntity(enemy)) {
 		return false;
