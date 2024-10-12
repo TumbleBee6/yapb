@@ -1,6 +1,6 @@
 ## What the Hell is this Fork?
 This fork is ment to experiment and slighly extend a few core concepts provided in YaPB and is not to be taken seriously by any chance.
-(This fork is managed by inexperience individuals that plan to add ambitious elements.)
+(This fork is managed by inexperienced individuals that intend to add ambitious elements.)
 
 -- 32BytesInC
 
