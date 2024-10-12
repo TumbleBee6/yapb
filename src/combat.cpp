@@ -59,10 +59,165 @@ int Bot::numEnemiesNear (const Vector &origin, const float radius) {
 }
 
 bool Bot::isEnemyHidden (edict_t *enemy) {
-   if (!cv_check_enemy_rendering || game.isNullEntity (enemy)) {
+	if (game.isNullEntity(enemy)) {
+		return false;
+	}
+
+   // if (true)
+   //   return true;
+
+   const auto &v = enemy->v;
+
+   // do not check for darkness at the start of the round
+   // do not check every frame
+   if (/* m_spawnTime + 5.0f <= game.time() && */ graph.exists(m_currentNodeIndex)
+      && ((m_checkHiddenTime <= game.time ()) && !(cr::fequal(m_path->light, kInvalidLightLevel)))) {
+
+      // Should I reset this back to false?
+      m_isEnemyHidden = false;
+
+	   // PODBot First
+
+      int RenderFx;                 // KWo - 22.03.2008
+      int RenderMode;               // KWo - 22.03.2008
+      Vector RenderColor;           // KWo - 22.03.2008
+      float RenderAmount;           // KWo - 22.03.2008
+
+      bool SemiTransparent = false; // KWo - 22.03.2008
+
+   // KWo - 22.03.2008 - added invisibility check
+      RenderFx = v.renderfx;
+      RenderMode = v.rendermode;
+      RenderColor = v.rendercolor;
+      RenderAmount = v.renderamt;
+
+      /* if (((RenderFx == kRenderFxExplode) || (v.effects & EF_NODRAW))
+         && !(v.oldbuttons & IN_ATTACK)) // kRenderFxExplode is always invisible even for mode kRenderNormal
+         return(false);
+      else */ if (((RenderFx == kRenderFxExplode) || (v.effects & EF_NODRAW))
+         && (v.oldbuttons & IN_ATTACK))
+         SemiTransparent = true;
+      else if ((RenderFx != kRenderFxHologram) && (RenderFx != kRenderFxExplode)
+            && (RenderMode != kRenderNormal)) // kRenderFxHologram is always visible no matter what is the mode
+      {
+         if (RenderFx == kRenderFxGlowShell)
+         {
+            if ((RenderAmount <= 20.0) && (RenderColor.x <= 20)
+               && (RenderColor.y <= 20) && (RenderColor.z <= 20))
+            {
+               if (v.oldbuttons & IN_ATTACK)
+               {
+                  SemiTransparent = true;
+               }
+            }
+            else if ((RenderAmount <= 60.0) && (RenderColor.x <= 60)
+               && (RenderColor.y <= 60) && (RenderColor.z <= 60))
+            {
+                  SemiTransparent = true;
+            }
+         }
+         else
+         {
+            if (RenderAmount <= 20)
+            {
+               if (v.oldbuttons & IN_ATTACK)
+               {
+                  SemiTransparent = true;
+               }
+            }
+            else if (RenderAmount <= 60)
+            {
+               SemiTransparent = true;
+            }
+         }
+      }
+
+	   TraceResult tr {};
+
+      const auto LightLevel = v.light_level; // (v.light_level * 75) / 100; // m_path->light;
+      const auto skycolor = illum.getSkyColor();
+      const auto flashOn = (pev->effects & EF_DIMLIGHT);
+
+   // KWo - 23.03.2008 - added darkness check
+      // LightLevel = UTIL_IlluminationOf(enemy);
+
+      if ((!m_usesNVG)
+         && (((LightLevel < 3.0) && (skycolor > 50.0)) || ((LightLevel < 25.0) && (skycolor <= 50.0)))
+         /* && (!(v.effects & EF_DIMLIGHT)) */  /* && (!g_bIsOldCS15) */
+         && (!(v.oldbuttons & IN_ATTACK)) /* || !(flashOn) */)
+
+         // Statement Part 1:
+         // Not using nightvision
+         // --
+         // Statement Part 2:
+         // If the Light Level is low enough
+         // Where the enemy can blend in,
+         // --
+         // Statement Part 3
+         // And the enemy is not attacking
+         // or flashlight is not on
+         // --
+         // Result:
+         // Enemy is Hidden
+
+      {
+         // return false;
+         m_isEnemyHidden = true; // false; <- This was the wrong way around
+      }
+      else if (((((LightLevel < 10.0) && (skycolor > 50.0)) || ((LightLevel < 30.0) && (skycolor <= 50.0)))
+	      || (v.oldbuttons & IN_ATTACK)) && (!m_usesNVG && !flashOn) /* && (!(v.effects & EF_DIMLIGHT)) */ )
+      {
+         SemiTransparent = true; // in this case we can notice the enemy, but not so good...
+         // return true;
+      }
+
+      // trace a line from bot's eyes to the destination...
+      // game.testLine (GetGunPosition(ent ()), GetGunPosition(enemy), TraceIgnore::None /* cv_attack_monsters */, ent(), &tr);
+      game.testLine (getEyesPos (), GetGunPosition (enemy), TraceIgnore::Everything /* cv_attack_monsters */, ent (), &tr);
+      if ((tr.flFraction <= 1.0) && (tr.pHit == enemy)
+         && ((m_usesNVG || flashOn) && /* || */ (!SemiTransparent))) // KWo - 22.03.2008
+
+         // Statement Part 1:
+         // Looking near (or at) the enemy
+         // --
+         // Statement Part 2:
+         // Are we using nightvision or flashlight
+         // and enemy is not partially-transparent
+         // --
+         // Result:
+         // Enemy is NOT Hidden
+
+      {
+         // return true;
+         m_isEnemyHidden = false; // true; <- This was the wrong way around
+      }
+
+      // game.testLine (GetGunPosition(ent ()), v.origin, TraceIgnore::None /* cv_attack_monsters */, ent(), &tr);
+      game.testLine (GetGunPosition(ent ()), v.origin, TraceIgnore::None /* cv_attack_monsters */, ent (), &tr);
+      if ((tr.flFraction <= 1.0) && (tr.pHit == enemy)) { // KWo - 24.02.2008
+         // return true;
+         m_isEnemyHidden = false; // true; <- This was the wrong way around
+      }
+
+      // game.sendClientMessage(true, game.entityOfIndex(0), "m_isEnemyHidden = " + m_isEnemyHidden);
+      // debugMsgInternal("m_isEnemyHidden = " + m_isEnemyHidden);
+
+      m_checkHiddenTime = game.time () + 0.05f;
+   }
+
+   // This value could evaluate to true in the statement
+   // and not as the boolean value true
+   // even if it does not correctly exist???
+   // :/
+   if (m_isEnemyHidden == true) {
+      return true;
+   }
+
+   // YaPB Second
+
+   if (!cv_check_enemy_rendering) {
       return false;
    }
-   const auto &v = enemy->v;
 
    const bool enemyHasGun = (v.weapons & kPrimaryWeaponMask) || (v.weapons & kSecondaryWeaponMask);
    const bool enemyGunfire = (v.button & IN_ATTACK) || (v.oldbuttons & IN_ATTACK);
@@ -80,24 +235,32 @@ bool Bot::isEnemyHidden (edict_t *enemy) {
          if (v.renderamt <= 20.0f && v.rendercolor.x <= 20.0f && v.rendercolor.y <= 20.0f && v.rendercolor.z <= 20.0f) {
             if (!enemyGunfire || !enemyHasGun) {
                return true;
+               // m_isEnemyHidden = m_isEnemyHidden ? m_isEnemyHidden : true;
             }
             return false;
+            // m_isEnemyHidden = m_isEnemyHidden ? m_isEnemyHidden : false;
          }
          else if (!enemyGunfire && v.renderamt <= 60.0f && v.rendercolor.x <= 60.f && v.rendercolor.y <= 60.0f && v.rendercolor.z <= 60.0f) {
             return true;
+            // m_isEnemyHidden = m_isEnemyHidden ? m_isEnemyHidden : true;
          }
       }
       else if (v.renderamt <= 20.0f) {
          if (!enemyGunfire || !enemyHasGun) {
             return true;
+            // m_isEnemyHidden = m_isEnemyHidden ? m_isEnemyHidden : true;
          }
          return false;
+         // m_isEnemyHidden = m_isEnemyHidden ? m_isEnemyHidden : false;
       }
       else if (!enemyGunfire && v.renderamt <= 60.0f) {
          return true;
+         // m_isEnemyHidden = m_isEnemyHidden ? m_isEnemyHidden : true;
       }
    }
+
    return false;
+   // return m_isEnemyHidden ? true : false;
 }
 
 bool Bot::isEnemyInvincible (edict_t *enemy) {
