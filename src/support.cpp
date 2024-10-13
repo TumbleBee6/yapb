@@ -41,6 +41,7 @@ BotSupport::BotSupport () {
       "mister, you are going down",
       "all command access granted, over and out",
       "buzwarn hostile presence detected nearest to your sector. over and out. doop"
+      "hostile resistance detected"
    };
 
    // register weapon aliases
